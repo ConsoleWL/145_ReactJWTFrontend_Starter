@@ -1,4 +1,7 @@
 import axios from "axios";
+import React, { useState } from "react";
+import SearchBar from "./SearchBar/SearchBar";
+import SearchResults from "./SearchResults/SearchResults";
 
 const SearchPage = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -18,6 +21,10 @@ const SearchPage = () => {
   return (
     <div>
       <h1>Search book page</h1>
+      {/* We NEED TO PASS HERE maybe search input maybe something else  some how this fetchBooks Function has to be implemeted*/}
+      <SearchBar />
+      {/* I think here needs to be passed searchResult */}
+      <SearchResults searchResults={searchResults} />
     </div>
   );
 };
