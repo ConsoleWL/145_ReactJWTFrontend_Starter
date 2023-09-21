@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchBar from "./SearchBar/SearchBar";
 import SearchResults from "./SearchResults/SearchResults";
 
@@ -13,17 +13,20 @@ const SearchPage = () => {
         `https://www.googleapis.com/books/v1/volumes?q=${searchInput}`
       );
       setSearchResults(response.data.items);
+      console.log(response.data.items);
     } catch (error) {
       console.log("Error in fetchBooks method", error);
     }
   };
 
+  useEffect(() => {
+    fetchBooks();
+  }, []);
+
   return (
     <div>
       <h1>Search book page</h1>
-      {/* We NEED TO PASS HERE maybe search input maybe something else  some how this fetchBooks Function has to be implemeted*/}
-      <SearchBar />
-      {/* I think here needs to be passed searchResult */}
+      <SearchBar filterBooks={setSearchInput} />
       <SearchResults searchResults={searchResults} />
     </div>
   );
