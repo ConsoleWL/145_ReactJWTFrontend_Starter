@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import SearchBar from "./SearchBar/SearchBar";
-import SearchResults from "./SearchResults/SearchResults";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import SearchResults from "../../components/SearchResults/SearchResults";
 
 const SearchPage = () => {
-  const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState(" ");
   const [searchResults, setSearchResults] = useState([]);
 
   const fetchBooks = async () => {
@@ -21,7 +21,7 @@ const SearchPage = () => {
 
   useEffect(() => {
     fetchBooks();
-  }, []);
+  }, [searchInput]);
 
   return (
     <div>
@@ -33,3 +33,6 @@ const SearchPage = () => {
 };
 
 export default SearchPage;
+
+// making change in the code and press save
+// bookdetails, search results, favorite to components

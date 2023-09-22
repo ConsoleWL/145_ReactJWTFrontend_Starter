@@ -4,7 +4,9 @@ const searchResults = ({ searchResults }) => {
   const bookItem = searchResults.map((book) => (
     <SearchItem key={book.id} book={book} />
   ));
+  // ADD IN HERE
   return (
+    // add && in here
     <div>
       <h4>Search Page</h4>
       <table>

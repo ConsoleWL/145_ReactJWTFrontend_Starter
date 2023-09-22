@@ -7,8 +7,8 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import AddCarPage from "./pages/AddCarPage/AddCarPage";
-import BookDetailsPage from "./pages/BookDetailsPage/BookDetailsPage";
-import FavoritePage from "./pages/FavoritesPage/FavoritesPage";
+import BookDetailsPage from "./components/BookDetailsPage/BookDetailsPage";
+import FavoritePage from "./components/FavoritesPage/FavoritesPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 
 // Component Imports
@@ -17,7 +17,6 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
-import BookDetailPage from "./pages/BookDetailsPage/BookDetailsPage";
 
 function App() {
   return (
