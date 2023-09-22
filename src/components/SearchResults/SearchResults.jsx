@@ -12,7 +12,6 @@ const searchResults = ({ searchResults }) => {
         <thead>
           <tr>
             <th>Title</th>
-            <th>Author</th>
           </tr>
         </thead>
         <tbody>{bookItem}</tbody>

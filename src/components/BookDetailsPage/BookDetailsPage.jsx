@@ -1,4 +1,4 @@
-const BookDetailsPage = () => {
+const BookDetailsPage = ({ bookObj }) => {
   return <div></div>;
 };
 

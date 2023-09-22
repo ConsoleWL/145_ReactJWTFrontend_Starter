@@ -31,6 +31,16 @@ function App() {
             </PrivateRoute>
           }
         />
+
+        <Route
+          path="/book/"
+          element={
+            <PrivateRoute>
+              <BookDetailsPage />
+            </PrivateRoute>
+          }
+        />
+
         <Route
           path="/add"
           element={

@@ -33,7 +33,6 @@ const SearchPage = () => {
       {searchResults.length > 0 ? (
         <SearchResults searchResults={searchResults} />
       ) : null}
-      {/* stll this thing is in there */}
       {/* <SearchResults searchResults={searchResults} /> */}
     </div>
   );

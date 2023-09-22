@@ -1,8 +1,13 @@
+import { Link } from "react-router-dom";
+
 const SearchItem = ({ book }) => {
   return (
     <tr>
-      <td>{book.volumeInfo.title}</td>
-      <td>{book.volumeInfo.authors}</td>
+      <td>
+        <Link to="/book/">
+          {book.volumeInfo.title} - {book.volumeInfo.authors}
+        </Link>
+      </td>
     </tr>
   );
 };
