@@ -4,7 +4,7 @@ const SearchItem = ({ book }) => {
   return (
     <tr>
       <td>
-        <Link to="/book/">
+        <Link to={`/book/${book.id}`}>
           {book.volumeInfo.title} - {book.volumeInfo.authors}
         </Link>
       </td>

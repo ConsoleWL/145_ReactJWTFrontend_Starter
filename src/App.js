@@ -33,7 +33,7 @@ function App() {
         />
 
         <Route
-          path="/book/"
+          path="/book/:bookId/"
           element={
             <PrivateRoute>
               <BookDetailsPage />
