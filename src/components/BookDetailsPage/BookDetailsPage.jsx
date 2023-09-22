@@ -6,7 +6,7 @@ const BookDetailsPage = () => {
   return (
     <div className="d-flex justify-content-evenly">
       <div className="p-2 w-50%">
-        <div>
+        <div className="d-flex align-items-start">
           <div>book image</div>
           <div>
             <button>Remove Favorite</button>
