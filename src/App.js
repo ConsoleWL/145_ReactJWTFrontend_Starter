@@ -42,7 +42,7 @@ function App() {
 
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-
+        {/* Maybe this car should be wrapped around privateRoute tags */}
         <Route path="/cars" element={<CarPage />} />
       </Routes>
       <Footer />

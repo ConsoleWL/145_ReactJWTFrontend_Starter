@@ -4,7 +4,7 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import SearchResults from "../../components/SearchResults/SearchResults";
 
 const SearchPage = () => {
-  const [searchInput, setSearchInput] = useState(" ");
+  const [searchInput, setSearchInput] = useState();
   const [searchResults, setSearchResults] = useState([]);
 
   const fetchBooks = async () => {
@@ -20,14 +20,21 @@ const SearchPage = () => {
   };
 
   useEffect(() => {
-    fetchBooks();
+    if (searchInput) {
+      fetchBooks();
+    }
   }, [searchInput]);
 
   return (
     <div>
       <h1>Search book page</h1>
       <SearchBar filterBooks={setSearchInput} />
-      <SearchResults searchResults={searchResults} />
+
+      {searchResults.length > 0 ? (
+        <SearchResults searchResults={searchResults} />
+      ) : null}
+      {/* stll this thing is in there */}
+      {/* <SearchResults searchResults={searchResults} /> */}
     </div>
   );
 };
