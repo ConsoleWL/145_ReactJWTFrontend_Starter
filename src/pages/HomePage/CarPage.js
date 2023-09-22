@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import axios from "axios";
 
-const HomePage = () => {
+const CarPage = () => {
   // The "user" value from this Hook contains user information (id, userName, email) from the decoded token
   // The "token" value is the JWT token sent from the backend that you will send back in the header of any request requiring authentication
   const [user, token] = useAuth();
@@ -45,4 +45,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default CarPage;

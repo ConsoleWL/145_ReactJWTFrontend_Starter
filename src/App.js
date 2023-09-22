@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
 // Pages Imports
-import HomePage from "./pages/HomePage/HomePage";
+import CarPage from "./pages/HomePage/CarPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import AddCarPage from "./pages/AddCarPage/AddCarPage";
@@ -27,7 +27,7 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage />
+              <SearchPage />
             </PrivateRoute>
           }
         />
@@ -43,7 +43,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
 
-        <Route path="/search" element={<SearchPage />} />
+        <Route path="/cars" element={<CarPage />} />
       </Routes>
       <Footer />
     </div>
