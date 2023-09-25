@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import BookReviews from "./BookReviews";
 
 const BookDetailsPage = () => {
+  const [user, token] = useAuth();
   const { bookId } = useParams();
   const [bookItem, setBookItem] = useState(null);
-  const [bookReviews, setBookReviews] = useState([]);
-
-  console.log(`book item ${bookItem}`);
+  const [bookReviews, setBookReviews] = useState(null);
 
   const fetchBook = async () => {
     try {
@@ -20,32 +21,39 @@ const BookDetailsPage = () => {
       console.log("Eror in fetchBook by id in Book DetailsPage ", error);
     }
   };
-
-  // const fetchReviews = async () => {
-  //   try {
-  //     let response2 = await axios.get(
-  //       `https://localhost:5001/api/BookDetails/${bookId}`
-  //     );
-  //     setBookReviews(response2);
-  //     console.log(`Book details ${response2}`);
-  //   } catch (error) {
-  //     console.log("Error in fetch reviews by Book id in Book DetailsPage");
-  //   }
-  // };
-
   useEffect(() => {
     fetchBook();
   }, []);
 
-  // useEffect(() => {
-  //   fetchReviews();
-  // fetchReviews();
-  // }, []);
+  const fetchReviews = async () => {
+    try {
+      let response2 = await axios.get(
+        `https://localhost:5001/api/BookDetails/${bookId}`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      setBookReviews(response2.data);
+      console.log(`Book reviews ${response2.data}`);
+    } catch (error) {
+      console.log("Error in fetch reviews by Book id in Book DetailsPage");
+    }
+  };
+
+  useEffect(() => {
+    fetchReviews();
+  }, [token]);
+
+  const reviewItem = bookReviews?.reviews.map((review, index) => (
+    <BookReviews key={index} bookReviewObj={review} />
+  ));
 
   return (
     bookItem && (
       <div className="d-flex justify-content-evenly">
-        <div className="p-2 w-50%">
+        <div className="col-8">
           <div className="d-flex align-items-start">
             <img src={bookItem.volumeInfo.imageLinks.smallThumbnail} />
             <div>
@@ -57,11 +65,15 @@ const BookDetailsPage = () => {
           <div>Discription: {bookItem.volumeInfo.description}</div>
         </div>
 
-        <div className="p-2 w-50%">
-          <div>Average User Rating: 4.5</div>
-          <div>User Reviews Table</div>
-          <div>Container to leave a review</div>
-        </div>
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">User</th>
+              <th scope="col">Review</th>
+            </tr>
+          </thead>
+          <tbody>{reviewItem}</tbody>
+        </table>
       </div>
     )
   );
