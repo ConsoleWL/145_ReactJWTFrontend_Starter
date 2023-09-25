@@ -65,15 +65,19 @@ const BookDetailsPage = () => {
           <div>Discription: {bookItem.volumeInfo.description}</div>
         </div>
 
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">User</th>
-              <th scope="col">Review</th>
-            </tr>
-          </thead>
-          <tbody>{reviewItem}</tbody>
-        </table>
+        <div>
+          <div>Average User Rating: {bookReviews.averageRating}</div>
+
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">User</th>
+                <th scope="col">Review</th>
+              </tr>
+            </thead>
+            <tbody>{reviewItem}</tbody>
+          </table>
+        </div>
       </div>
     )
   );
