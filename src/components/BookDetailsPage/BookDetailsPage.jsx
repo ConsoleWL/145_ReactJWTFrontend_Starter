@@ -50,6 +50,29 @@ const BookDetailsPage = () => {
     <BookReviews key={index} bookReviewObj={review} />
   ));
 
+  // Post a review
+  const reviewPost = {
+    bookId: "",
+    text: "",
+    rating: 2, // change it later make a button
+  };
+
+  async function postNewCar() {
+    try {
+      let response = await axios.post(
+        "https://localhost:5001/api/Reviews",
+        reviewPost,
+        {
+          headers: {
+            Authorization: "Bearer" + token,
+          },
+        }
+      );
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   return (
     bookItem && (
       <div className="d-flex justify-content-evenly">
@@ -57,7 +80,9 @@ const BookDetailsPage = () => {
           <div className="d-flex align-items-start">
             <img src={bookItem.volumeInfo.imageLinks.smallThumbnail} />
             <div>
-              <button>Remove Favorite</button>
+              <button type="button" className="btn btn-success">
+                Remove Favorite
+              </button>
             </div>
           </div>
           <div>Title: {bookItem.volumeInfo.title}</div>
@@ -66,8 +91,10 @@ const BookDetailsPage = () => {
         </div>
 
         <div>
+          {/*  */}
           <div>Average User Rating: {bookReviews.averageRating}</div>
 
+          {/* list of reviews */}
           <table className="table">
             <thead>
               <tr>
@@ -77,6 +104,15 @@ const BookDetailsPage = () => {
             </thead>
             <tbody>{reviewItem}</tbody>
           </table>
+
+          {/* Leave a review */}
+          <div>
+            <label className="form-label">Leave a review</label>
+            <textarea className="form-control" rows="3"></textarea>
+            <button type="button" className="btn btn-primary">
+              Submit
+            </button>
+          </div>
         </div>
       </div>
     )
